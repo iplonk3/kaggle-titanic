@@ -10,17 +10,8 @@ df = pd.read_csv('train.csv', header=0)
 # Create column for gender with numerical values 
 df['Gender'] = df['Sex'].map({'male':0, 'female':1}).astype(int)
 
-# Determines if person is classified as a child, adult, or senior
-def func(x):
-    if x < 18: # Child
-        return 0
-    elif x < 55: # Adult
-        return 1
-    else: # Senior
-        return 2
-
 # Creates a new column with age classifications
-df['AgeCat'] = df['Age'].map(lambda x: func(x))
+df['AgeCat'] = df['Age'].map(lambda x: 0 if x < 18 else 1 if x < 55 else 2).astype(int)
 
 # Calculates median ages for each combination of gender, pclass, and agecat
 median_ages = np.zeros((2,3,3))
@@ -53,7 +44,7 @@ test_df['Gender'] = test_df['Sex'].map({'male':0, 'female':1}).astype(int)
 
 
 # Creates a new column with age classifications
-test_df['AgeCat'] = test_df['Age'].map(lambda x: func(x))
+test_df['AgeCat'] = test_df['Age'].map(lambda x: 0 if x < 18 else 1 if x < 55 else 2).astype(int)
 
 # Calculates median ages for each combination of gender, pclass, and agecat
 median_test_ages = np.zeros((2,3,3))
