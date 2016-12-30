@@ -1,2 +1,4 @@
-# kaggle-titanic
-Submission for Kaggle's Titanic: Machine Learning from Disaster competition
+# Kaggle-titanic
+
+These are my submissions for Kaggle's Titanic: Machine Learning from Disaster competition.
+
